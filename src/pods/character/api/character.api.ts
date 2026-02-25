@@ -1,15 +1,24 @@
-import { Hotel } from './character.api-model';
 import { Lookup } from '#common/models';
-import { mockCities, mockHotelCollection } from './character.mock-data';
+import * as apiModel from './index';
 
-export const getHotel = async (id: string): Promise<Hotel> => {
-  return mockHotelCollection.find((h) => h.id === id);
+const url = 'https://rickandmortyapi.com/api/character';
+
+
+export const getCharacter = async (id: string): Promise<apiModel.Character> => {
+  const response = await fetch(`${url}/${id}`);
+  const data: apiModel.Character = await response.json();
+  return data;
 };
 
-export const getCities = async (): Promise<Lookup[]> => {
-  return mockCities;
+export const getGenders = async (): Promise<Lookup[]> => {
+  return [
+    { id: 'Female', name: 'Female' },
+    { id: 'Male', name: 'Male' },
+    { id: 'Genderless', name: 'Genderless' },
+    { id: 'unknown', name: 'Unknown' },
+  ];
 };
 
-export const saveHotel = async (hotel: Hotel): Promise<boolean> => {
+export const saveCharacter = async (character: apiModel.Character): Promise<boolean> => {
   return true;
 };

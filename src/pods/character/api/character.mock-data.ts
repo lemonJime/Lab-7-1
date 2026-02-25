@@ -1,7 +1,7 @@
-import { Hotel } from './character.api-model';
+import { Character } from './character.api-model';
 import { Lookup } from '#common/models';
 
-export const mockHotelCollection: Hotel[] = [
+/*export const mockHotelCollection: Character[] = [
   {
     id: '1',
     type: 'hotel',
@@ -82,9 +82,9 @@ export const mockHotelCollection: Hotel[] = [
     tripAdvisorRatingUrl:
       'http://www.tripadvisor.com/img/cdsi/img2/ratings/traveler/4.5-12345-4.gif',
   },
-];
+];*/
 
-export const mockCities: Lookup[] = [
+/*export const mockCities: Lookup[] = [
   {
     id: 'Seattle',
     name: 'Seattle',
@@ -93,4 +93,4 @@ export const mockCities: Lookup[] = [
     id: 'New York',
     name: 'New York',
   },
-];
+];*/
