@@ -11,8 +11,8 @@ Aplicación que consume la [API pública de Rick & Morty](https://rickandmortyap
 
 ## 📸 Capturas
 
-### Vista principal - Plan semanal
+### Vista principal - Listado de personajes
 ![Vista principal](./screenshots/home-1.png)
 
-### Vista de favoritos
+### Vista de detalle del personaje
 ![Favoritos](./screenshots/detail-1.png)
