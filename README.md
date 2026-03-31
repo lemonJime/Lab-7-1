@@ -12,7 +12,7 @@ Aplicación que consume la [API pública de Rick & Morty](https://rickandmortyap
 ## 📸 Capturas
 
 ### Vista principal - Plan semanal
-![Vista principal](./screenshots/home-1.png.png)
+![Vista principal](./screenshots/home-1.png)
 
 ### Vista de favoritos
-![Favoritos](./screenshots/detail-1.png.png)
+![Favoritos](./screenshots/detail-1.png)
