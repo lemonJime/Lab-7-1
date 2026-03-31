@@ -6,7 +6,7 @@ import { useCharacterCollection } from './character-collection.hook';
 import { CharacterCollectionComponent } from './character-collection.component';
 
 export const CharacterCollectionContainer = () => {
-  const { characterCollection, loadCharacterCollection } = useCharacterCollection();
+  const { characterCollection, loadCharacterCollection, handleSearchTerm, searchTerm, currentPage, totalPages, handlePageChange } = useCharacterCollection();
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -29,9 +29,14 @@ export const CharacterCollectionContainer = () => {
   return (
     <CharacterCollectionComponent
       characterCollection={characterCollection}
+      searchTerm={searchTerm}
       onCreateCharacter={handleCreateHotel}
       onEdit={handleEdit}
       onDelete={handleDelete}
+      onHandleSearchTerm={handleSearchTerm}
+      currentPage={currentPage}
+      totalPages={totalPages}
+      onHandlePageChange={handlePageChange}
     />
   );
 };

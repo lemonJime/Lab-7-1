@@ -6,18 +6,31 @@ import { mapToCollection } from '#common/mappers';
 
 
 export const useCharacterCollection = () => {
-  const [characterCollection, setCharacterCollection] = React.useState<CharacterEntityVm[]>(
-    []
-  );
+  const [characterCollection, setCharacterCollection] = React.useState<CharacterEntityVm[]>([]);
+  const [searchTerm, setSearchTerm] = React.useState<string>('');
+  const [currentPage, setCurrentPage] = React.useState<number>(1);
+  const [totalPages, setTotalPages] = React.useState<number>(1);
 
-  const loadCharacterCollection = () => {
-    getCharacterCollection().then((result) => {
-      //console.log(`Result de getCharacterCollection: ${ JSON.stringify(result)}`);
-      //console.log(`Result de mapToCollection: ${ JSON.stringify(mapToCollection(result, mapFromApiToVm))}`);
-      setCharacterCollection(mapToCollection(result, mapFromApiToVm))
-    }
-    );
+  const loadCharacterCollection = (term?: string, page?: number) => {
+    const nameToQuery = term ?? searchTerm;
+    const pageToQuery = page ?? currentPage;
+
+    getCharacterCollection(nameToQuery, pageToQuery).then((result) => {
+      setCharacterCollection(mapToCollection(result.results, mapFromApiToVm))
+      setTotalPages(result.info.pages);
+    });
   };
 
-  return { characterCollection, loadCharacterCollection };
+  const handleSearchTerm = (term: string) => {
+    setSearchTerm(term);
+    setCurrentPage(1); 
+    loadCharacterCollection(term, 1); 
+  }
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    loadCharacterCollection(undefined, page);
+  }
+
+  return { characterCollection, loadCharacterCollection, searchTerm, currentPage, handleSearchTerm, handlePageChange, totalPages };
 };

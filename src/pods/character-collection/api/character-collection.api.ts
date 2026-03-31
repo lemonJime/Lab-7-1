@@ -1,23 +1,22 @@
-import { CharacterEntityApi } from './character-collection.api-model';
-import { mockHotelCollection } from './character-collection.mock-data';
+
 import * as apiModel from './index'
 
-let characterCollection = [...mockHotelCollection];
-const url = 'https://rickandmortyapi.com/api/character';
 
-// export const getCharacterCollection = async (): Promise<CharacterEntityApi[]> => {
-//   return characterCollection;
-// };
+export const getCharacterCollection = async (name?: string, page?: number): Promise<apiModel.CharacterEntityApi> => {
 
-export const getCharacterCollection = async (): Promise<apiModel.Result[]> => {
-  const response = await fetch(url);
-  const data : apiModel.CharacterEntityApi = await response.json();
+  const url = 'https://rickandmortyapi.com/api/character';
+  const nameQuery = name ? `name=${name}` : '';
+  const pageQuery = page ? `page=${page}` : '';
+  const queryParams = nameQuery && pageQuery ? `${nameQuery}&${pageQuery}` : `${nameQuery}${pageQuery}`;
+  const finalUrl = queryParams ? `${url}?${queryParams}` : url;
 
-  return data.results;
+  const response = await fetch(finalUrl);
+  const data: apiModel.CharacterEntityApi = await response.json();
+
+  return data;
 };
 
 export const deleteCharacter = async (id: number): Promise<boolean> => {
-  //characterCollection = characterCollection.filter((h) => h.id !== id);
   console.log('deleteCharacter', id);
   return true;
 };

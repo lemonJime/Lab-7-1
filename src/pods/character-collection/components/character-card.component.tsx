@@ -22,33 +22,6 @@ export const CharacterCard: React.FunctionComponent<Props> = (props) => {
   const { character, onEdit, onDelete } = props;
 
   return (
-    // <Card>
-    //   <CardHeader
-    //     avatar={<Avatar aria-label="Hotel">{hotel.rating}</Avatar>}
-    //     title={hotel.name}
-    //     subheader={hotel.address}
-    //   />
-    //   <CardContent>
-    //     <div className={classes.content}>
-    //       <CardMedia
-    //         image={hotel.picture}
-    //         title={hotel.name}
-    //         style={{ height: 0, paddingTop: '56.25%' }}
-    //       />
-    //       <Typography variant="subtitle1" gutterBottom>
-    //         {hotel.description}
-    //       </Typography>
-    //     </div>
-    //   </CardContent>
-    //   <CardActions>
-    //     <IconButton onClick={() => onEdit(hotel.id)}>
-    //       <EditIcon />
-    //     </IconButton>
-    //     <IconButton onClick={() => onDelete(hotel.id)}>
-    //       <DeleteIcon />
-    //     </IconButton>
-    //   </CardActions>
-    // </Card>
 
     <Card>
       <CardHeader
